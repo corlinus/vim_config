@@ -64,6 +64,10 @@ if !exists("autoload_vimrc")
   au BufWritePost .vimrc so %
 endif
 
+"some stuff to get the mouse going in term
+set mouse=a
+set ttymouse=xterm2
+
 " writing swap file when one second idle, also used by plugins autofollow
 set updatetime=1000
 
