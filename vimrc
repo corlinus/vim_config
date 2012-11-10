@@ -26,7 +26,7 @@ set nojoinspaces
 set switchbuf=usetab
 set laststatus=2
 set history=200
-set statusline=%1*%n\ %*\ %<%f\ %h%=%1*\ %W%Y%R%m\ %*%10(%c\ %l/%L%)\ %2*%P
+"set statusline=%1*%n\ %*\ %<%f\ %h%=%1*\ %W%Y%R%m\ %*%10(%c\ %l/%L%)\ %2*%P
 hi User1 ctermbg=black ctermfg=8 cterm=bold
 
 " show linebreak marker
