@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 if $TERM =~ 'xterm'
     " ugliest amd most seamless way to make 256 colors work
     set t_Co=256
