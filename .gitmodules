@@ -22,3 +22,6 @@
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
 	url = git://github.com/vim-scripts/endwise.vim.git
+[submodule "vim/bundle/surround.vim"]
+	path = vim/bundle/surround.vim
+	url = git://github.com/vim-scripts/surround.vim.git
