@@ -14,7 +14,8 @@ set fileencodings=ucs-bom,utf-8,cp1251
 set encoding=utf-8
 set background=dark
 syntax on
-colorscheme desert
+"colorscheme desert
+colorscheme railscasts
 filetype plugin indent on
 
 set shortmess+=I
