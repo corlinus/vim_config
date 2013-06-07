@@ -6,8 +6,7 @@ if $TERM =~ 'xterm'
 end
 
 "abbrevs
-iabbrev #L RAILS_DEFAULT_LOGGER.debug "\n#{">"*100}\n#{}\n#{">"*100}\n"<ESC>15<Left>i
-iabbrev #R logger.debug "\n#{">"*100}\n#{}\n#{">"*100}\n"<ESC>15<Left>i
+iabbrev #R Rails.logger.debug "\n#{">"*100}\n#{}\n#{">"*100}\n"<ESC>15<Left>i
 
 set fileencodings=ucs-bom,utf-8,cp1251
 
@@ -52,7 +51,7 @@ set expandtab
 set smarttab
 set bs=indent,eol,start
 
-set pt=<F10>
+set pt=<F9>
 map Y y$
 
 " russian kbd layout
@@ -98,3 +97,6 @@ set updatetime=1000
 
 " ??
 set clipboard=autoselect,unnamed,exclude:cons\|linux
+
+au BufNewFile,BufRead *.haml.deface setf haml
+au BufNewFile,BufRead *.erb.deface setf eruby
