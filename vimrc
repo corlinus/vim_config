@@ -5,9 +5,6 @@ if $TERM =~ 'xterm'
     set t_Co=256
 end
 
-"abbrevs
-iabbrev #R Rails.logger.debug "\n#{">"*100}\n#{}\n#{">"*100}\n"<ESC>15<Left>i
-
 set fileencodings=ucs-bom,utf-8,cp1251
 
 set encoding=utf-8
@@ -46,30 +43,54 @@ set showbreak=»
 
 set ai
 set shiftwidth=4
-set ts=8
+set ts=4
 set expandtab
 set smarttab
 set bs=indent,eol,start
 
 set pt=<F9>
-map Y y$
+nnoremap Y y$
+
+" convert quotation marks
+nnoremap <leader>w m`f'r"F'r"``
+nnoremap <leader>W m`f"r'F"r'``
 
 " russian kbd layout
 set keymap=russian-jcukenwin
 set imi=0
 set imsearch=0
-imap <C-L> <C-^>
-cmap <C-L> <C-^>
+inoremap <C-L> <C-^>
+cnoremap <C-L> <C-^>
+
+" folding level
+setlocal foldlevelstart=99
 
 function! UseRubyIndent ()
     setlocal tabstop=2
     setlocal softtabstop=2
     setlocal shiftwidth=2
     setlocal expandtab
-    set number
+    setlocal number
+    setlocal foldmethod=syntax
 endfunction
 
-autocmd FileType ruby,eruby call UseRubyIndent()
+function! ErubyAbbrs ()
+    "iabbrev <% <% %><left><left><left>
+    "iabbrev <%- <%- %><left><left><left>
+    iabbrev <buffer> <%> <% end %>
+endfunction
+
+augroup my_ft_autocmds
+    autocmd!
+    autocmd FileType yml,ruby,eruby,coffee,cucumber call UseRubyIndent()
+    autocmd FileType eruby call ErubyAbbrs()
+    "abbrevs
+    autocmd FileType ruby,eruby iabbrev #R Rails.logger.debug "\n#{">"*100}\n#{}\n#{">"*100}\n"<ESC>15<Left>i
+
+    " comment mappings
+    " TODO
+    "autocmd FileType vim nnoremap <buffer> m`^i" <esc>``
+augroup END
 
 " tab remap
 map <Tab> >>
@@ -80,7 +101,9 @@ vmap <S-Tab> <gv
 noremap g <C-I>
 
 " maps
-map <leader>. :split $MYVIMRC<cr>
+map <leader>. :vsplit $MYVIMRC<cr>
+"map <leader><leader> :NERDTreeToggle<cr>
+map <leader><leader> :NERDTreeFind<cr>
 
 " autoread config
 if !exists("autoload_vimrc")
@@ -100,3 +123,10 @@ set clipboard=autoselect,unnamed,exclude:cons\|linux
 
 au BufNewFile,BufRead *.haml.deface setf haml
 au BufNewFile,BufRead *.erb.deface setf eruby
+au BufNewFile,BufRead *.xlsx.axlsx setf ruby
+
+" ctrl_p config
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|bundle)|(tmp|public\/system))$'
+
+" external config
+"set grepprg=git\ grep\ -n\ $*\
