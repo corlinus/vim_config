@@ -6,14 +6,15 @@ if $TERM =~ 'xterm'
 end
 
 set fileencodings=ucs-bom,utf-8,cp1251
+set guioptions-=T
 
 set encoding=utf-8
 set background=dark
 syntax on
-"colorscheme desert
 colorscheme railscasts
 filetype plugin indent on
 
+set number
 set shortmess+=I
 set incsearch
 set ignorecase smartcase
@@ -55,6 +56,11 @@ nnoremap Y y$
 nnoremap <leader>w m`f'r"F'r"``
 nnoremap <leader>W m`f"r'F"r'``
 
+nnoremap <Space> za
+vnoremap <Space> za
+
+nnoremap <leader>m :RTmigration<cr>
+
 " russian kbd layout
 set keymap=russian-jcukenwin
 set imi=0
@@ -65,6 +71,10 @@ cnoremap <C-L> <C-^>
 " folding level
 setlocal foldlevelstart=99
 
+" highlight logn strings
+highlight OverLength ctermbg=darkred guibg=#592929
+match OverLength /\%101v.\+/
+
 function! UseRubyIndent ()
     setlocal tabstop=2
     setlocal softtabstop=2
@@ -72,6 +82,7 @@ function! UseRubyIndent ()
     setlocal expandtab
     setlocal number
     setlocal foldmethod=syntax
+
 endfunction
 
 function! ErubyAbbrs ()
@@ -82,10 +93,13 @@ endfunction
 
 augroup my_ft_autocmds
     autocmd!
-    autocmd FileType yml,ruby,eruby,coffee,cucumber call UseRubyIndent()
+    autocmd FileType yml,yaml,ruby,eruby,coffee,cucumber call UseRubyIndent()
     autocmd FileType eruby call ErubyAbbrs()
     "abbrevs
     autocmd FileType ruby,eruby iabbrev #R Rails.logger.debug "\n#{">"*100}\n#{}\n#{">"*100}\n"<ESC>15<Left>i
+    autocmd FileType ruby,eruby iabbrev #b binding.pry
+
+    autocmd FileType xslt set ts=2 sw=2
 
     " comment mappings
     " TODO
@@ -124,9 +138,15 @@ set clipboard=autoselect,unnamed,exclude:cons\|linux
 au BufNewFile,BufRead *.haml.deface setf haml
 au BufNewFile,BufRead *.erb.deface setf eruby
 au BufNewFile,BufRead *.xlsx.axlsx setf ruby
+au BufRead,BufNewFile *.rabl setf ruby
+au BufRead,BufNewFile *.jbuilder setf ruby
 
 " ctrl_p config
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|bundle)|(tmp|public\/system))$'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|bundle)|(tmp|public\/system|public\/uploads))$'
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
 
 " external config
 "set grepprg=git\ grep\ -n\ $*\
