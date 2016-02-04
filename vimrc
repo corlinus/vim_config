@@ -1,4 +1,49 @@
-call pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-endwise'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'bogado/file-line'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 
 if $TERM =~ 'xterm'
     " ugliest amd most seamless way to make 256 colors work
@@ -71,9 +116,9 @@ cnoremap <C-L> <C-^>
 " folding level
 setlocal foldlevelstart=99
 
-" highlight logn strings
-highlight OverLength ctermbg=darkred guibg=#592929
-match OverLength /\%101v.\+/
+" highlight long strings
+" highlight OverLength ctermbg=darkred guibg=#592929
+" match OverLength /\%101v.\+/
 
 function! UseRubyIndent ()
     setlocal tabstop=2
