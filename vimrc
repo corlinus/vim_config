@@ -30,11 +30,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-markdown'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'slim-template/vim-slim.git'
 Plugin 'bogado/file-line'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
@@ -42,6 +39,10 @@ Plugin 'ervandew/supertab'
 Plugin 'rust-lang/rust.vim'
 " go lang
 Plugin 'fatih/vim-go'
+" ruby
+Plugin 'tpope/vim-rails'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'kchmck/vim-coffee-script'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
