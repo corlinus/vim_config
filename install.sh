@@ -9,7 +9,7 @@ do
     if (test -f $dst_file) then
         if (test -h $dst_file) then
             echo "$dst_file already exists and it's a link"
-        else    
+        else
             echo "$dst_file already exists"
         fi
     else
