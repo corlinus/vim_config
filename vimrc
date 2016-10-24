@@ -43,6 +43,7 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-rails'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'ngmy/vim-rubocop'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,6 +111,7 @@ nnoremap <Space> za
 vnoremap <Space> za
 
 nnoremap <leader>m :RTmigration<cr>
+nnoremap <leader>r :RuboCop -D<cr>
 
 " russian kbd layout
 set keymap=russian-jcukenwin
