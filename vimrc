@@ -202,3 +202,5 @@ let g:ctrlp_prompt_mappings = {
 
 " external config
 "set grepprg=git\ grep\ -n\ $*\
+
+set clipboard=unnamed
