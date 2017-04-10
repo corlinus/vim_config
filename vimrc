@@ -112,6 +112,8 @@ vnoremap <Space> za
 
 nnoremap <leader>m :RTmigration<cr>
 nnoremap <leader>r :RuboCop -D<cr>
+nnoremap <leader>p obinding.pry<ESC><cr>
+
 
 " russian kbd layout
 set keymap=russian-jcukenwin
@@ -192,6 +194,7 @@ au BufNewFile,BufRead *.erb.deface setf eruby
 au BufNewFile,BufRead *.xlsx.axlsx setf ruby
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.jbuilder setf ruby
+au BufRead,BufNewFile *.html.arb setf ruby
 
 " ctrl_p config
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|bundle)|(tmp|public\/system|public\/uploads))$'
